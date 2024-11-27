@@ -21,7 +21,7 @@ async function getWeather(location) {
     document.querySelector('.five_day_forecast').style.display = "none";
     document.querySelector('.one').style.display = "block";
     document.querySelector('.two').style.display = "block";
-    const weather = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
+    const weather = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
     const weatherData = await weather.json();
     document.getElementById('F').checked ? (
         tempUnits = `${weatherData.current.temp_f}`,
