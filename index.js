@@ -18,8 +18,10 @@ function setFav() {
 
 function loadFav(){
     favorite = sessionStorage.getItem("favorite");
-    if (favorite)
+    if (favorite) {
+        document.getElementById('location').value = `${favorite}`;
         getWeather(favorite);
+    }
 }
 
 async function getWeather(location) {
@@ -32,6 +34,7 @@ async function getWeather(location) {
     document.querySelector('.two').style.display = "block";
     const weather = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
     const weatherData = await weather.json();
+    
     document.getElementById('F').checked ? (
         tempUnits = `${weatherData.current.temp_f}`,
         units = "F",
@@ -42,7 +45,7 @@ async function getWeather(location) {
         units = "C",
         unitsAlt = "F"
     );
-    document.querySelector('.temp').innerHTML = `${tempUnits}&#176; ${units}<button class="changeUnits" onclick="changeUnits()">${unitsAlt}</button>`;
+    document.querySelector('.temp').innerHTML = `${tempUnits}&#176; ${units}<button class="changeUnits" onclick="changeUnits(document.getElementById('location').value)">${unitsAlt}</button>`;
     document.getElementById('icon').src = `${weatherData.current.condition.icon}`;
     document.getElementById('icon').style.opacity = 1;
     document.getElementById('city').innerHTML = `${location}`;
@@ -80,7 +83,7 @@ async function getWeather(location) {
 
 }   
 
-async function changeUnits(){
+async function changeUnits(location){
     const weather = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
     const weatherData = await weather.json();
     units === "C" ? (
@@ -93,7 +96,7 @@ async function changeUnits(){
         units = "C",
         unitsAlt = "F"
     );
-    document.querySelector('.temp').innerHTML = `${tempUnits}&#176; ${units}<button class="changeUnits" onclick="changeUnits()">${unitsAlt}</button>`;
+    document.querySelector('.temp').innerHTML = `${tempUnits}&#176; ${units}<button class="changeUnits" onclick="changeUnits(document.getElementById('location').value)">${unitsAlt}</button>`;
     weatherData.forecast.forecastday.forEach((element, index) => {
         units ==='F' ? (
             document.getElementById("day"+index).innerHTML = `${weatherData.forecast.forecastday[index].day.maxtemp_f}<br />${weatherData.forecast.forecastday[index].day.mintemp_f}`
