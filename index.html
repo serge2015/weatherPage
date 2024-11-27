@@ -17,6 +17,7 @@
           size="15"
           name="location"
           id="location"
+          required
         />
         <p>
           <input type="radio" id="F" name="temp" value="fahrenheit" checked />
@@ -27,7 +28,7 @@
             class="search"
             type="submit"
             value="Enter"
-            onclick="getWeather(document.getElementById('location').value)"
+            onclick="validateInput()"
           >
             Enter
           </button>

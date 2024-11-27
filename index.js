@@ -3,6 +3,15 @@ let units;
 let unitsAlt;
 let favorite;
 
+function validateInput(){
+    if (document.getElementById('location').value.trim() === "") {
+        alert("Please enter a city");
+        document.inputWeather.location.focus();
+        return false;
+    } else {
+        getWeather(document.getElementById('location').value);
+    }
+}
 function setFav() {
   sessionStorage.setItem("favorite", document.getElementById("city").innerText);
 }
