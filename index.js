@@ -72,7 +72,7 @@ async function getWeather(location) {
 }   
 
 async function changeUnits(){
-    const weather = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
+    const weather = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
     const weatherData = await weather.json();
     units === "C" ? (
         tempUnits = `${weatherData.current.temp_f}`,
