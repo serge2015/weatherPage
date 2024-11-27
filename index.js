@@ -2,7 +2,6 @@ let tempUnits;
 let units;
 let unitsAlt;
 let favorite;
-let currentDay;
 const d = new Date();
 const n = d.getDay();
 
@@ -41,8 +40,6 @@ async function getWeather(location) {
     document.querySelector('.two').style.display = "block";
     const weather = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
     const weatherData = await weather.json();
-    console.log(weatherData);
-    console.log(currentDay);
     document.getElementById('F').checked ? (
         tempUnits = `${weatherData.current.temp_f}`,
         units = "F",
