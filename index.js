@@ -2,6 +2,13 @@ let tempUnits;
 let units;
 let unitsAlt;
 let favorite;
+let currentDay;
+const d = new Date();
+const n = d.getDay();
+
+function dayOfWeekAsString(dayIndex) {
+    return ["Sun", "Mon","Tue","Wed","Thu","Fri","Sat", "Sun", "Mon", "Tue", "Wed", "Thu"][dayIndex] || '';
+  }
 
 function validateInput(){
     if (document.getElementById('location').value.trim() === "") {
@@ -34,7 +41,8 @@ async function getWeather(location) {
     document.querySelector('.two').style.display = "block";
     const weather = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=79c219b599e24530ab245407242611&q=${location}&days=5&aqi=no&alerts=no`)
     const weatherData = await weather.json();
-    
+    console.log(weatherData);
+    console.log(currentDay);
     document.getElementById('F').checked ? (
         tempUnits = `${weatherData.current.temp_f}`,
         units = "F",
@@ -53,6 +61,7 @@ async function getWeather(location) {
         document.getElementById('city').innerHTML += "&nbsp;&#11088;"
     }
     weatherData.forecast.forecastday.forEach((element, index) => {
+        document.getElementById("longDay"+index).innerHTML = dayOfWeekAsString(n + 1 + index);
         units ==='F' ? (
             document.getElementById("day"+index).innerHTML = `${weatherData.forecast.forecastday[index].day.maxtemp_f}<br />${weatherData.forecast.forecastday[index].day.mintemp_f}`
         ):
