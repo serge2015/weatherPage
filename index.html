@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js"></script>
+  </head>
+  <body onload="loadFav()">
+    <div class="container">
+      <div class="inputWeather">
+        <h3>Anytime Weather</h3>
+        <input
+          type="text"
+          placeholder="Enter city name"
+          size="15"
+          name="location"
+          id="location"
+        />
+        <p>
+          <input type="radio" id="F" name="temp" value="fahrenheit" checked />
+          <label for="F">F</label>
+          <input type="radio" id="C" name="temp" value="celsius" />
+          <label for="C">C</label><br /><br />
+          <button
+            class="search"
+            type="submit"
+            value="Enter"
+            onclick="getWeather(document.getElementById('location').value)"
+          >
+            Enter
+          </button>
+        </p>
+      </div>
+      <div class="weather--wrapper">
+          <div class="outputWeather">
+              <h3>Current Conditions</h3>
+              <div class="loader one"></div>
+          <img
+            src="./images/transparent.png"
+            width="96"
+            height="96"
+            alt="Conditions"
+            id="icon"
+          />
+          <p class="temp">&nbsp;</p>
+          <p id="city">&nbsp;</p>
+        </div>
+        <p class="fav_city">
+          <input
+            type="checkbox"
+            id="fav_city"
+            name="fav_city"
+            value=""
+            disabled
+            onchange="setFav()"
+          />
+          <label for="fav_city">Mark as favorite</label>
+        </p>
+        <div class="forecast">
+          <h3>5-day forecast</h3>
+          <div class="loader two"></div>
+          <ul class="five_day_forecast">
+            <li>
+              <img
+                src="./images/transparent.png"
+                width="64"
+                height="64"
+                alt="Conditions for the Day"
+                id="icon0"
+              />
+              <span id="day0"></span>
+            </li>
+            <li>
+              <img
+                src="./images/transparent.png"
+                width="64"
+                height="64"
+                alt="Conditions for the Day"
+                id="icon1"
+              />
+              <span id="day1">&nbsp;<br />&nbsp;</span>
+            </li>
+            <li>
+              <img
+                src="./images/transparent.png"
+                width="64"
+                height="64"
+                alt="Conditions for the Day"
+                id="icon2"
+              />
+              <span id="day2"></span>
+            </li>
+            <li>
+              <img
+                src="./images/transparent.png"
+                width="64"
+                height="64"
+                alt="Conditions for the Day"
+                id="icon3"
+              />
+              <span id="day3"></span>
+            </li>
+            <li>
+              <img
+                src="./images/transparent.png"
+                width="64"
+                height="64"
+                alt="Conditions for the Day"
+                id="icon4"
+              />
+              <span id="day4"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
