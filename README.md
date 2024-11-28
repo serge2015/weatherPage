@@ -1,3 +1,5 @@
+  [![HitCount](https://hits.dwyl.com/serge2015/weatherPage.svg?style=flat-square&show=unique)](http://hits.dwyl.com/serge2015/weatherPage)
+
 <h1 id="top">Weather Page</h1>
 <p>Element Requirements</p>
 <ol>
